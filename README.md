@@ -62,8 +62,8 @@ Whether you are building a DAW piano roll, a traditional notation editor, a live
 
 ## Requirements
 
-* **C++ Compiler:** C++17 or newer (GCC, Clang, or MSVC)
-* **CMake:** 3.16 or newer
+* **C++ Compiler:** C++20 or newer (GCC, Clang, or MSVC)
+* **CMake:** 3.28 or newer
 * **GoogleTest (GTest):** Required *only* when building unit tests (`DUEY_BUILD_TESTS=ON`)
 
 ---
@@ -109,7 +109,7 @@ target_link_libraries(YourMusicApp PRIVATE Duey::DueyLib)
 ## Quick Example
 
 ```cpp
-#include <duey/Duey.hpp>
+#include <duey/duey.hpp>
 #include <iostream>
 
 int main() {
@@ -159,7 +159,7 @@ DueyLib/
 ├── CMakeLists.txt          # Top-level CMake configuration
 ├── include/
 │   └── duey/               # Public headers
-│       ├── Duey.hpp        # Umbrella header
+│       ├── duey.hpp        # Umbrella header
 │       ├── core/           # Rational, Pitch, Interval, Events
 │       ├── theory/         # Scales, Chords, Harmony, Validation
 │       ├── transform/      # Transposition, Quantize, Generative tools
@@ -167,7 +167,6 @@ DueyLib/
 │       └── io/             # Standard MIDI File & byte stream codecs
 ├── src/                    # Private implementation files
 └── tests/                  # GoogleTest unit tests (mirrors include/ structure)
-    ├── CMakeLists.txt
     ├── core/
     ├── theory/
     ├── transform/
@@ -182,9 +181,3 @@ DueyLib/
 1. All new features and bug fixes must include corresponding **GoogleTest** unit tests.
 2. Keep core logic **pure and deterministic**—avoid global mutable state, OS-specific APIs, and non-seeded randomness.
 3. Ensure zero compiler warnings under `-Wall -Wextra -Wpedantic` (or `/W4` on MSVC).
-
----
-
-## License
-
-UNLICENSE
